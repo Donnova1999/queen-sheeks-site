@@ -165,10 +165,15 @@ section{position:relative}
 
 /* ---------- home hero: original logo introduction, then a balanced landscape slideshow ---------- */
 main{padding-top:var(--header-h)}
-.hero-wrap{padding-top:clamp(0px,2.2vw,30px)}
-.hero{position:relative;overflow:hidden;background:var(--cream);isolation:isolate;margin-inline:auto;aspect-ratio:3/2;
-  width:min(calc(100% - var(--gutter) - var(--gutter-r)), 1240px, calc((100svh - var(--header-h) - 170px) * 1.5));min-width:min(100%,320px)}
-@media (max-width:700px){.hero{width:100%}}
+.hero-wrap{padding-top:clamp(0px,1.6vw,22px)}
+/* fills the page width (up to 1600px) and the screen height, staying between 2:1 and 3:2 so dishes are never cut */
+.hero{position:relative;overflow:hidden;background:var(--cream);isolation:isolate;margin-inline:auto;
+  --hw:min(calc(100vw - var(--gutter) - var(--gutter-r) - 12px),1600px);
+  width:var(--hw);height:clamp(calc(var(--hw) / 2), calc(100svh - var(--header-h) - 44px), calc(var(--hw) / 1.5))}
+@media (max-width:700px){.hero{--hw:100vw;width:100%;height:calc(100vw / 1.5)}}
+.hero .slide.contain img.ph{object-fit:contain}
+.hero .slide img.bg{position:absolute;inset:0;filter:blur(26px) saturate(1.05) brightness(.97);transform:scale(1.2)!important;transition:none}
+.hero .slide img.ph{position:relative;z-index:1}
 .hero .slide{position:absolute;inset:0;opacity:0;transition:opacity 1.8s var(--ease)}
 .hero .slide.on{opacity:1}
 .hero .slide img{width:100%;height:100%;object-fit:cover;transform:scale(1.035);transition:transform 8s linear}
@@ -604,7 +609,7 @@ input:focus,select:focus,textarea:focus{outline:none;border-color:var(--gold);bo
 
   <section class="hero-wrap" aria-label="Queen Sheeks">
     <div class="hero" id="hero">
-      <div class="slide on"><img src="img/hero-1.jpg" alt="A Queen Sheeks dining table set with Jamaican dishes, sauces and dessert among palm leaves" style="object-position:50% 50%" fetchpriority="high" decoding="async"></div><div class="slide"><img src="img/hero-2.jpg" alt="Crispy fritters with a chilli dipping sauce, served by hand" style="object-position:50% 50%" fetchpriority="low" decoding="async"></div><div class="slide"><img src="img/hero-3.jpg" alt="A slice of rich dark cake with a pot of custard" style="object-position:50% 56%" fetchpriority="low" decoding="async"></div><div class="slide"><img src="img/hero-4.jpg" alt="The Queen Sheeks pop-up dining room set with white tables, natural place settings and palm leaves" style="object-position:50% 50%" fetchpriority="low" decoding="async"></div>
+      <div class="slide on"><img class="ph" src="img/hero-1.jpg" alt="A Queen Sheeks dining table set with Jamaican dishes, sauces and dessert among palm leaves" style="object-position:50% 52%" fetchpriority="high" decoding="async"></div><div class="slide"><img class="ph" src="img/hero-2.jpg" alt="Crispy fritters with a chilli dipping sauce, served by hand" style="object-position:50% 45%" fetchpriority="low" decoding="async"></div><div class="slide contain"><img class="bg" src="img/hero-3.jpg" alt="" aria-hidden="true" decoding="async"><img class="ph" src="img/hero-3.jpg" alt="A slice of rich dark cake with a pot of custard" style="object-position:50% 50%" fetchpriority="low" decoding="async"></div><div class="slide"><img class="ph" src="img/hero-4.jpg" alt="The Queen Sheeks pop-up dining room set with white tables, natural place settings and palm leaves" style="object-position:50% 58%" fetchpriority="low" decoding="async"></div>
       <div class="intro" id="heroIntro" aria-hidden="true">
         <img class="lf tr" src="img/leaf-tr.png" alt="">
         <img class="lf bl" src="img/leaf-bl.png" alt="">
