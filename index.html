@@ -110,8 +110,9 @@ p{margin:0}
 .brand{display:block;flex:0 0 auto;width:clamp(170px,19vw,238px);position:relative}
 .brand img{width:100%;transition:opacity .45s var(--ease)}
 .brand .lt{position:absolute;inset:0}
-.nav{display:flex;align-items:center;gap:clamp(14px,1.8vw,30px)}
-.nav a{font:400 .74rem/1 var(--f-body);letter-spacing:.17em;text-transform:uppercase;text-decoration:none;padding:8px 0;position:relative;white-space:nowrap}
+.site-header .wrap{max-width:1440px}
+.nav{display:flex;align-items:center;gap:clamp(14px,1.55vw,30px)}
+.nav a{font:400 .74rem/1 var(--f-body);letter-spacing:.15em;text-transform:uppercase;text-decoration:none;padding:8px 0;position:relative;white-space:nowrap}
 .nav a::after{content:"";position:absolute;left:0;right:0;bottom:0;height:1px;background:currentColor;transform:scaleX(0);transform-origin:left;transition:transform .4s var(--ease)}
 .nav a:hover::after,.nav a[aria-current="page"]::after{transform:scaleX(1)}
 .nav .btn{min-height:42px;padding:0 18px;font-size:.7rem}
@@ -128,7 +129,12 @@ body.over-photo .site-header:not(.scrolled) .nav .btn{--b:transparent;--c:var(--
 body.over-photo .site-header:not(.scrolled) .nav .btn:hover{background:var(--on-dark);color:var(--ink)}
 body.over-photo .site-header:not(.scrolled)::before{content:"";position:absolute;inset:0 0 -40px;background:linear-gradient(180deg,rgba(20,16,12,.55),transparent);pointer-events:none;z-index:-1}
 
-@media (max-width:1120px){
+@media (min-width:1181px) and (max-width:1299px){
+  .nav a{font-size:.7rem;letter-spacing:.13em}
+  .nav .btn{padding:0 15px;font-size:.66rem}
+}
+@media (min-width:1181px){.hright{display:none!important}}
+@media (max-width:1180px){
   .nav{display:none}
   .menu-btn{display:block}
 }
@@ -536,7 +542,7 @@ input:focus,select:focus,textarea:focus{outline:none;border-color:var(--gold);bo
 /* header compact Book Now (mobile/tablet) */
 .hright{display:flex;align-items:center;gap:6px}
 .hbook{display:none}
-@media (max-width:1120px){.hbook{display:inline-flex;min-height:38px;padding:0 14px;font-size:.66rem;letter-spacing:.16em}}
+@media (max-width:1180px){.hbook{display:inline-flex;min-height:38px;padding:0 14px;font-size:.66rem;letter-spacing:.16em}}
 @media (max-width:380px){.hbook{padding:0 10px;font-size:.6rem;letter-spacing:.12em}.brand{width:150px}}
 /* three equal buttons */
 .btn3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;width:min(100%,940px);margin-inline:auto}
@@ -628,6 +634,7 @@ input:focus,select:focus,textarea:focus{outline:none;border-color:var(--gold);bo
       <img class="dk" src="img/logo-wordmark.png" alt="Queen Sheeks" width="936" height="158">
     </a>
     <nav class="nav" aria-label="Main">
+      <a href="#home" data-go="home">Home</a>
       <a href="#our-story" data-go="our-story">Our Story</a>
       <a href="#restaurant" data-go="restaurant">Restaurant &amp; Pop-Ups</a>
       <a href="#cookery-school" data-go="cookery-school">Cookery School</a>
@@ -1609,7 +1616,7 @@ input:focus,select:focus,textarea:focus{outline:none;border-color:var(--gold);bo
   <span class="eyebrow">Design preview · Milestone 1</span>
   <h3>For your approval, Roshika</h3>
   <p class="muted" style="font-size:.9rem">Everything on these six pages uses your written copy, photographs and logo from Google Drive. Forms and bookings are demonstrations here and will be connected in Wix during Milestone 2.</p>
-  <ol><li><b>Homepage.</b> Your original logo appears first, then fades to reveal the four photographs (table spread, fritters, cake, dining room) in a balanced frame. A Join Our Mailing List pop-up appears once, after a short delay.</li><li><b>Booking buttons.</b> Book Our Dining Experience, Book Our Masterclass and Discover Our Story under the banner; a compact Book Now beside the menu icon on mobile; three buttons in Your Seat at the Table Awaits.</li><li><b>Photos.</b> The blue-chef photo with fritters is in the Welcome section, IMG_0935 is on the Cookery School card, and your childhood photo now opens Our Story in full, with the heading beside it so it never covers your face.</li><li><b>Family drawing.</b> Your black-and-white family drawing now sits in the Family Legacy section on Our Story, shown in full and unedited. Tap it to view it larger.</li><li><b>Frames.</b> Photos and their captions now sit neatly inside the gold box.</li><li><b>Masterclass.</b> The official flyer is on the Caribbean Seasoning Masterclass listing; tap it to view it larger.</li><li><b>Award.</b> Every mention reads “StrEATfood Awards 2026, 3rd Place, Dish of the Year”.</li><li><b>Facebook.</b> Restaurant and Cookery School Facebook pages are linked on Contact, the footer and the Cookery School page.</li><li><b>Bookings and forms.</b> These are demonstrations here. In Milestone 2 they connect to Wix Events (secure payment and automatic confirmations) and Wix Forms, with submissions going to queensheeksbusiness@outlook.com.</li></ol>
+  <ol><li><b>Homepage.</b> Your original logo appears first, then fades to reveal the four photographs (table spread, fritters, cake, dining room) in a balanced frame. A Join Our Mailing List pop-up appears a few seconds after the site opens on each visit, and stops once someone has joined. A Home link is now in the desktop menu too.</li><li><b>Booking buttons.</b> Book Our Dining Experience, Book Our Masterclass and Discover Our Story under the banner; a compact Book Now beside the menu icon on mobile; three buttons in Your Seat at the Table Awaits.</li><li><b>Photos.</b> The blue-chef photo with fritters is in the Welcome section, IMG_0935 is on the Cookery School card, and your childhood photo now opens Our Story in full, with the heading beside it so it never covers your face.</li><li><b>Family drawing.</b> Your black-and-white family drawing now sits in the Family Legacy section on Our Story, shown in full and unedited. Tap it to view it larger.</li><li><b>Frames.</b> Photos and their captions now sit neatly inside the gold box.</li><li><b>Masterclass.</b> The official flyer is on the Caribbean Seasoning Masterclass listing; tap it to view it larger.</li><li><b>Award.</b> Every mention reads “StrEATfood Awards 2026, 3rd Place, Dish of the Year”.</li><li><b>Facebook.</b> Restaurant and Cookery School Facebook pages are linked on Contact, the footer and the Cookery School page.</li><li><b>Bookings and forms.</b> These are demonstrations here. In Milestone 2 they connect to Wix Events (secure payment and automatic confirmations) and Wix Forms, with submissions going to queensheeksbusiness@outlook.com.</li></ol>
 </aside>
 
 <script>
@@ -1779,6 +1786,7 @@ input:focus,select:focus,textarea:focus{outline:none;border-color:var(--gold);bo
       if(form.dataset.inline!==undefined){ form.querySelector('.row').hidden=true; form.querySelector('.consent').hidden=true; }
       else form.hidden=true;
       box.classList.add('show');
+      if(form.classList.contains('subscribe')){ try{ localStorage.setItem('qs_subscribed','1'); }catch(e){} }
     });
   }
   document.querySelectorAll('form.form, form.subscribe').forEach(wire);
@@ -1797,15 +1805,16 @@ input:focus,select:focus,textarea:focus{outline:none;border-color:var(--gold);bo
   nb.addEventListener('click',()=>{ const o=!notes.classList.contains('open'); notes.classList.toggle('open',o); nb.setAttribute('aria-expanded',String(o)); });
   document.getElementById('notesClose').addEventListener('click',closeNotes);
 
-  /* mailing-list pop-up: once per visitor, after the logo introduction and a few seconds of photography */
+  /* mailing-list pop-up: every visit (each time the site is opened), after the logo introduction
+     and a few seconds of photography; never again for someone who has already joined the list */
   (function(){
     const pop=document.getElementById('mailPop'); if(!pop) return;
-    let seen=false; try{ seen=localStorage.getItem('qs_mail_pop')==='1'; }catch(e){}
-    if(seen) return;
+    let joined=false; try{ joined=localStorage.getItem('qs_subscribed')==='1'; localStorage.removeItem('qs_mail_pop'); }catch(e){}
+    if(joined) return;
     setTimeout(function tryShow(){
       if(document.querySelector('.modal.open')||document.getElementById('mnav').classList.contains('open')){ setTimeout(tryShow,4000); return; }
-      openModal(pop); try{ localStorage.setItem('qs_mail_pop','1'); }catch(e){}
-    }, 9000);
+      openModal(pop);
+    }, 8000);
   })();
   show(route());
 })();
