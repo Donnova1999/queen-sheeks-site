@@ -604,11 +604,11 @@ input:focus,select:focus,textarea:focus{outline:none;border-color:var(--gold);bo
 
   <section class="hero-wrap" aria-label="Queen Sheeks">
     <div class="hero" id="hero">
-      <div class="slide on"><img src="img/hero-1.jpg" alt="A Queen Sheeks dining table set with Jamaican dishes, sauces and dessert among palm leaves" style="object-position:50% 50%" fetchpriority="high" decoding="async"></div><div class="slide"><img src="img/hero-2.jpg" alt="Crispy fritters with a chilli dipping sauce, served by hand" style="object-position:50% 50%"  decoding="async"></div><div class="slide"><img src="img/hero-3.jpg" alt="A slice of rich dark cake with a pot of custard" style="object-position:50% 56%"  decoding="async"></div><div class="slide"><img src="img/hero-4.jpg" alt="The Queen Sheeks pop-up dining room set with white tables, natural place settings and palm leaves" style="object-position:50% 50%"  decoding="async"></div>
+      <div class="slide on"><img src="img/hero-1.jpg" alt="A Queen Sheeks dining table set with Jamaican dishes, sauces and dessert among palm leaves" style="object-position:50% 50%" fetchpriority="high" decoding="async"></div><div class="slide"><img src="img/hero-2.jpg" alt="Crispy fritters with a chilli dipping sauce, served by hand" style="object-position:50% 50%" fetchpriority="low" decoding="async"></div><div class="slide"><img src="img/hero-3.jpg" alt="A slice of rich dark cake with a pot of custard" style="object-position:50% 56%" fetchpriority="low" decoding="async"></div><div class="slide"><img src="img/hero-4.jpg" alt="The Queen Sheeks pop-up dining room set with white tables, natural place settings and palm leaves" style="object-position:50% 50%" fetchpriority="low" decoding="async"></div>
       <div class="intro" id="heroIntro" aria-hidden="true">
         <img class="lf tr" src="img/leaf-tr.png" alt="">
         <img class="lf bl" src="img/leaf-bl.png" alt="">
-        <img class="lockup" src="img/logo-lockup.png" alt="" width="936" height="206">
+        <img class="lockup" src="img/logo-lockup.png" alt="" width="936" height="206" fetchpriority="high">
       </div>
     </div>
     <div class="wrap hero-cap">
@@ -1603,14 +1603,27 @@ input:focus,select:focus,textarea:focus{outline:none;border-color:var(--gold);bo
   function restart(){ clearInterval(timer); timer=setInterval(()=>{ if(!document.hidden) go(idx+1); },6500); }
   /* logo introduction: the original logo shows on its own, then fades to reveal the first photograph */
   const intro=document.getElementById('heroIntro'); let introT=[];
+  let introToken=null;
+  const ready=im=>(!im||(im.complete&&im.naturalWidth))?Promise.resolve():new Promise(r=>{im.addEventListener('load',r,{once:true});im.addEventListener('error',r,{once:true});});
+  const cap=ms=>new Promise(r=>setTimeout(r,ms));
   function playIntro(done){
     introT.forEach(clearTimeout); introT=[];
     if(!intro){ done(); return; }
+    const token={}; introToken=token;
     intro.classList.remove('gone','show'); void intro.offsetWidth;
-    introT.push(setTimeout(()=>intro.classList.add('show'),80));
-    introT.push(setTimeout(()=>{ intro.classList.add('gone'); done(); }, reduce?1800:3000));
+    const lock=intro.querySelector('.lockup'), first=slides[0]&&slides[0].querySelector('img');
+    /* show the logo as soon as it has loaded, hold it, and only reveal once the first photograph is ready */
+    Promise.race([ready(lock),cap(2500)]).then(()=>{
+      if(introToken!==token) return;
+      intro.classList.add('show'); const shownAt=Date.now();
+      Promise.race([ready(first),cap(7000)]).then(()=>{
+        if(introToken!==token) return;
+        const wait=Math.max(0,(reduce?1500:2700)-(Date.now()-shownAt));
+        introT.push(setTimeout(()=>{ if(introToken!==token) return; intro.classList.add('gone'); done(); },wait));
+      });
+    });
   }
-  function hero(on){ clearInterval(timer); introT.forEach(clearTimeout); if(on&&slides.length){ idx=0; go(0); playIntro(()=>{ go(0); restart(); }); } }
+  function hero(on){ clearInterval(timer); introT.forEach(clearTimeout); introToken=null; if(on&&slides.length){ idx=0; go(0); playIntro(()=>{ go(0); restart(); }); } }
 
   /* ---------- reveal on scroll (only for content below the first screen) ---------- */
   let io=null;
