@@ -532,6 +532,51 @@ input:focus,select:focus,textarea:focus{outline:none;border-color:var(--gold);bo
 .cookbook .cover{box-shadow:none;transform:none;filter:drop-shadow(0 26px 30px rgba(42,37,31,.28))}
 #reviewsModal .cards-strip img{aspect-ratio:1/1}
 @media (max-width:760px){#reviewsModal .cards-strip{grid-template-columns:1fr}}
+
+/* header compact Book Now (mobile/tablet) */
+.hright{display:flex;align-items:center;gap:6px}
+.hbook{display:none}
+@media (max-width:1120px){.hbook{display:inline-flex;min-height:38px;padding:0 14px;font-size:.66rem;letter-spacing:.16em}}
+@media (max-width:380px){.hbook{padding:0 10px;font-size:.6rem;letter-spacing:.12em}.brand{width:150px}}
+/* three equal buttons */
+.btn3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;width:min(100%,940px);margin-inline:auto}
+.btn3 .btn{min-height:46px;padding:0 14px;font-size:.7rem;letter-spacing:.16em;text-align:center;line-height:1.3}
+@media (max-width:700px){.btn3{grid-template-columns:1fr;width:min(100%,340px)}}
+/* photo caption chip */
+.exp-card .img{position:relative}
+.imgcap{position:absolute;left:12px;bottom:12px;right:12px;width:max-content;max-width:calc(100% - 24px);background:rgba(28,49,37,.88);color:var(--on-dark);font:500 .66rem/1.4 var(--f-body);letter-spacing:.14em;text-transform:uppercase;padding:7px 10px}
+/* mailing list pop-up */
+.mailpop{width:min(520px,100%)!important;text-align:center;overflow:hidden!important;background:var(--cream)!important}
+.mailpop .mp-logo{width:min(300px,80%);margin:4px auto 0}
+.mailpop .mp-leaf{position:absolute;right:-26px;top:-20px;width:150px;opacity:.85;pointer-events:none}
+.mailpop .subscribe{text-align:left}
+.mailpop .mp-no{background:none;border:0;color:var(--ink-soft);font:500 .7rem/1 var(--f-body);letter-spacing:.18em;text-transform:uppercase;cursor:pointer;text-decoration:underline;text-underline-offset:4px;padding:8px;justify-self:center;align-self:center}
+
+/* frames: the photo and its caption sit inside the gold box */
+.frame.offset{padding:12px;border:1px solid var(--gold);background:var(--paper)}
+.frame.offset::before{display:none}
+.frame.offset .cap{margin:12px 2px 0}
+@media (max-width:880px){.frame.offset{margin-right:0!important}}
+/* our story opening banner: the childhood photograph shown whole, heading beside it */
+.story-banner{position:relative;overflow:hidden;background:var(--forest);color:var(--on-dark);isolation:isolate}
+.story-banner > img.bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:blur(30px) saturate(1.1);transform:scale(1.2);opacity:.55}
+.story-banner::after{content:"";position:absolute;inset:0;z-index:0;background:linear-gradient(90deg,rgba(16,12,9,.82) 0%,rgba(16,12,9,.6) 50%,rgba(16,12,9,.35) 100%)}
+.sb-inner{position:relative;z-index:1;display:grid;grid-template-columns:minmax(0,1.15fr) auto;align-items:center;gap:clamp(28px,5vw,80px);padding-block:clamp(36px,5vw,64px)}
+.sb-text{display:flex;flex-direction:column;gap:18px}
+.sb-text .eyebrow{color:var(--gold-light)}
+.sb-text h1{font-size:var(--step-4);color:#fff;max-width:14ch;text-shadow:0 2px 18px rgba(0,0,0,.35)}
+.sb-photo{margin:0;justify-self:end}
+.sb-photo img{height:min(64svh,600px);width:auto;max-width:100%;border:8px solid #f6efe4;box-shadow:0 26px 50px -20px rgba(0,0,0,.6)}
+@media (max-width:760px){
+  .sb-inner{grid-template-columns:1fr;gap:26px}
+  .sb-photo{justify-self:center;order:-1}
+  .sb-photo img{height:auto;width:min(78vw,340px)}
+  .sb-text{text-align:center;align-items:center}
+  .story-banner::after{background:linear-gradient(180deg,rgba(16,12,9,.4) 0%,rgba(16,12,9,.75) 100%)}
+}
+/* masterclass flyer */
+.class-card .visual.flyer{border:0;padding:clamp(14px,2vw,26px);background:var(--cream-deep);display:flex;align-items:flex-start;justify-content:center;cursor:zoom-in;min-height:0}
+.class-card .visual.flyer img{position:static;width:100%;height:auto;max-height:720px;object-fit:contain;box-shadow:0 18px 36px -22px rgba(42,37,31,.55)}
 /* reveal: elements are visible at rest; only below-fold items are pre-hidden by script */
 .rv{transition:opacity 1s var(--ease),transform 1s var(--ease)}
 .rv.pre{opacity:0;transform:translateY(22px)}
@@ -555,6 +600,7 @@ input:focus,select:focus,textarea:focus{outline:none;border-color:var(--gold);bo
 <svg width="0" height="0" style="position:absolute" aria-hidden="true">
   <symbol id="i-leaf" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="1" d="M3 21C8 16 13 11 21 3M7.5 16.5c-.5-2 0-4 1.5-5.5M7.5 16.5c2 .5 4 0 5.5-1.5M11 13c-.4-2.2.3-4.3 2-6M11 13c2.2.4 4.3-.3 6-2M14.5 9.5c-.2-1.8.4-3.3 1.8-4.6M14.5 9.5c1.8.2 3.3-.4 4.6-1.8"/></symbol>
   <symbol id="i-ig" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="5" fill="none" stroke="currentColor" stroke-width="1.4"/><circle cx="12" cy="12" r="4.2" fill="none" stroke="currentColor" stroke-width="1.4"/><circle cx="17.4" cy="6.6" r="1" fill="currentColor"/></symbol>
+  <symbol id="i-fb" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="5" fill="none" stroke="currentColor" stroke-width="1.4"/><path fill="none" stroke="currentColor" stroke-width="1.4" d="M13.5 21v-7h2.4l.4-2.8h-2.8V9.4c0-.8.3-1.4 1.4-1.4h1.5V5.5c-.3 0-1.1-.1-2.1-.1-2.1 0-3.5 1.3-3.5 3.6v2.2H8.4V14h2.4v7"/></symbol>
   <symbol id="i-arrow" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="1.4" d="M4 12h15M14 7l5 5-5 5"/></symbol>
   <symbol id="i-check" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="1.6" d="M4 12.5l5 5L20 6.5"/></symbol>
   <symbol id="i-hands" viewBox="0 0 40 40"><path fill="none" stroke="currentColor" stroke-width="1.2" d="M6 26c4-1 7-4 9-8l3-6c.8-1.6 3-1 2.6.8L19 18h9c1.7 0 2.2 2.2.6 2.8M28 20.8c1.6 0 2 2 .5 2.6M28.5 23.4c1.5.2 1.6 2.2.1 2.6M28.6 26c1.3.4 1 2.4-.4 2.4H17c-3 0-5 1-8 2"/></symbol>
@@ -576,9 +622,12 @@ input:focus,select:focus,textarea:focus{outline:none;border-color:var(--gold);bo
       <a href="#cookery-school" data-go="cookery-school">Cookery School</a>
       <a href="#catering" data-go="catering">Catering &amp; Private Events</a>
       <a href="#contact" data-go="contact">Contact</a>
-      <a class="btn" href="#restaurant" data-go="restaurant" data-to="events">Book a Pop-Up</a>
+      <a class="btn" href="#restaurant" data-go="restaurant" data-to="events">Book Now</a>
     </nav>
-    <button class="menu-btn" id="menuBtn" aria-label="Open menu" aria-expanded="false" aria-controls="mnav"><span></span><span></span><span></span></button>
+    <div class="hright">
+      <a class="btn hbook" href="#restaurant" data-go="restaurant" data-to="events">Book Now</a>
+      <button class="menu-btn" id="menuBtn" aria-label="Open menu" aria-expanded="false" aria-controls="mnav"><span></span><span></span><span></span></button>
+    </div>
   </div>
 </header>
 
@@ -621,8 +670,9 @@ input:focus,select:focus,textarea:focus{outline:none;border-color:var(--gold);bo
       <h1 class="sr">Queen Sheeks, an award-winning Jamaican restaurant in the making</h1>
       <p class="kicker">An Award-Winning Jamaican Restaurant in the Making</p>
       <p class="tagline">A Taste of Love in Every Bite.</p>
-      <div class="btns center">
-        <a class="btn" href="#restaurant" data-go="restaurant">Explore Our Dining Experiences</a>
+      <div class="btn3">
+        <a class="btn" href="#restaurant" data-go="restaurant" data-to="events">Book Our Dining Experience</a>
+        <a class="btn" href="#cookery-school" data-go="cookery-school" data-to="classes">Book Our Masterclass</a>
         <a class="btn ghost" href="#our-story" data-go="our-story">Discover Our Story</a>
       </div>
     </div>
@@ -639,7 +689,7 @@ input:focus,select:focus,textarea:focus{outline:none;border-color:var(--gold);bo
       <div class="split wide-img mt-l">
         <div class="pair rv">
           <figure class="frame tall" style="margin:0"><img src="img/welcome-a.jpg" alt="Guests enjoying Jamaican dishes at a Queen Sheeks pop-up table" loading="lazy" decoding="async"></figure>
-          <figure class="frame tall" style="margin:0"><img src="img/welcome-b.jpg" alt="Chef Roshika plating food in the kitchen" loading="lazy" decoding="async"></figure>
+          <figure class="frame tall" style="margin:0"><img src="img/welcome-b.jpg" alt="Chef Roshika in a blue chef’s jacket holding a plate of fritters" loading="lazy" decoding="async"></figure>
         </div>
         <div class="copy stack rv">
           <p>Queen Sheeks is more than a food experience. It’s a celebration of Jamaican heritage, bold Caribbean flavours, heartfelt hospitality and the joy of sharing unforgettable moments around the table.</p>
@@ -667,12 +717,12 @@ input:focus,select:focus,textarea:focus{outline:none;border-color:var(--gold);bo
             <p>Step into the world of Queen Sheeks through our restaurant pop-ups, where authentic Jamaican flavours, carefully curated menus and warm hospitality come together.</p>
             <p>From signature favourites to special dining events, every experience brings us one step closer to our permanent restaurant.</p>
           </div>
-          <div class="btns mt-s"><a class="btn" href="#restaurant" data-go="restaurant">Explore Our Dining Experiences</a></div>
+          <div class="btns mt-s"><a class="btn" href="#restaurant" data-go="restaurant" data-to="events">Book Our Dining Experience</a></div>
         </div>
       </article>
       <div class="exp-pair">
         <article class="exp-card rv">
-          <div class="img"><img style="object-position:50% 8%" src="img/home-cook.jpg" alt="Chef Roshika pouring jerk gravy while cooking at the StrEATfood Awards" loading="lazy" decoding="async"></div>
+          <div class="img"><img style="object-position:50% 40%" src="img/home-cook.jpg" alt="Chef Roshika cooking at the StrEATfood Awards 2026" loading="lazy" decoding="async"></div>
           <div class="txt">
             <span class="eyebrow green">Learn. Cook. Eat. Take Jamaica Home.</span>
             <h3>Queen Sheeks Jamaican Cookery School</h3>
@@ -761,9 +811,10 @@ input:focus,select:focus,textarea:focus{outline:none;border-color:var(--gold);bo
       <span class="eyebrow">Be Part of the Queen Sheeks Journey</span>
       <h2 class="h-l" style="color:#fff">Your seat at the table awaits.</h2>
       <p class="copy">Join us at an upcoming restaurant pop-up, discover our Jamaican cooking experiences or bring Queen Sheeks to your next event.</p>
-      <div class="btns center">
-        <a class="btn light" href="#restaurant" data-go="restaurant" data-to="events">View Upcoming Events</a>
-        <a class="btn outline-light" href="#contact" data-go="contact">Get in Touch</a>
+      <div class="btn3">
+        <a class="btn light" href="#restaurant" data-go="restaurant" data-to="events">Upcoming Restaurant Pop-Ups</a>
+        <a class="btn light" href="#cookery-school" data-go="cookery-school" data-to="classes">Book a Cookery Class</a>
+        <a class="btn light" href="#catering" data-go="catering" data-to="enquiry">Catering Enquiries</a>
       </div>
     </div>
   </section>
@@ -771,11 +822,14 @@ input:focus,select:focus,textarea:focus{outline:none;border-color:var(--gold);bo
 
 <!-- =================================================================== OUR STORY -->
 <div class="page" data-page="our-story" data-title="Our Story | Queen Sheeks" hidden>
-  <section class="banner">
-    <img src="img/story-banner.jpg" alt="Chef Roshika and the Queen Sheeks team cooking in the kitchen">
-    <div class="wrap inner">
-      <span class="eyebrow">Our Story</span>
-      <h1>Rooted in Jamaica. Inspired by Family. Made with Love.</h1>
+  <section class="story-banner">
+    <img class="bg" src="img/story-child.jpg" alt="" aria-hidden="true">
+    <div class="wrap sb-inner">
+      <div class="sb-text">
+        <span class="eyebrow">Our Story</span>
+        <h1>Rooted in Jamaica. Inspired by Family. Made with Love.</h1>
+      </div>
+      <figure class="sb-photo"><img src="img/story-child.jpg" alt="Roshika Forrest as a young child, standing in front of a bright studio backdrop" width="606" height="864"></figure>
     </div>
   </section>
 
@@ -796,13 +850,9 @@ input:focus,select:focus,textarea:focus{outline:none;border-color:var(--gold);bo
   <section class="sec band">
     <div class="wrap">
       <div class="legacy">
-        <div class="art-ph rv" role="img" aria-label="Space reserved for the Queen Sheeks family artwork">
-          <div class="stack" style="align-items:center">
-            <div class="orn"><svg><use href="#i-leaf"/></svg></div>
-            <p class="h-m" style="font-family:var(--f-display)">Family artwork</p>
-            <p class="muted" style="max-width:30ch;font-size:.95rem">The black-and-white family drawing will be shown here in full, without cropping or filters.</p>
-          </div>
-        </div>
+        <button class="art rv" type="button" data-lb="img/family.jpg" data-cap="Three generations. One family. A dream built with love." aria-label="View the family drawing larger">
+          <img src="img/family.jpg" alt="Black-and-white drawing of Roshika with her father and grandfather" width="1077" height="864" loading="lazy" decoding="async">
+        </button>
         <div class="stack-l rv">
           <span class="eyebrow">More Than a Dream</span>
           <h2 class="h-l">A Family Legacy</h2>
@@ -1029,7 +1079,7 @@ input:focus,select:focus,textarea:focus{outline:none;border-color:var(--gold);bo
           <p>Through hands-on guidance, traditional ingredients and recipes rooted in Jamaican heritage, you’ll discover not only how to prepare flavourful dishes, but the culture and stories behind them.</p>
           <p class="sign">Because cooking is more than following a recipe. It’s about learning, creating and sharing something special.</p>
         </div>
-        <a class="insta" href="https://www.instagram.com/queen_sheeks_cookery/" target="_blank" rel="noopener"><svg><use href="#i-ig"/></svg>@queen_sheeks_cookery</a>
+        <div style="display:flex;flex-wrap:wrap;gap:6px 22px"><a class="insta" href="https://www.instagram.com/queen_sheeks_cookery/" target="_blank" rel="noopener"><svg><use href="#i-ig"/></svg>@queen_sheeks_cookery</a><a class="insta" href="https://www.facebook.com/share/19cHrSYWnV/?mibextid=wwXIfr" target="_blank" rel="noopener"><svg><use href="#i-fb"/></svg>Cookery School on Facebook</a></div>
       </div>
     </div>
   </section>
@@ -1043,10 +1093,9 @@ input:focus,select:focus,textarea:focus{outline:none;border-color:var(--gold);bo
       </div>
 
       <article class="class-card rv" aria-labelledby="cl1">
-        <div class="visual">
-          <img src="img/class.jpg" alt="Chef Roshika cooking with jerk gravy" loading="lazy" decoding="async">
-          <span class="badge gold stamp">Saturday 30 January 2027</span>
-        </div>
+        <button class="visual flyer" type="button" data-lb="img/flyer-masterclass.jpg" data-cap="Caribbean Seasoning Masterclass, Saturday 30 January 2027" aria-label="View the masterclass flyer larger">
+          <img src="img/flyer-masterclass.jpg" alt="Official Caribbean Seasoning Masterclass flyer" width="690" height="864" loading="lazy" decoding="async">
+        </button>
         <div class="body">
           <span class="eyebrow green">Our First Experience</span>
           <div class="stack">
@@ -1072,7 +1121,7 @@ input:focus,select:focus,textarea:focus{outline:none;border-color:var(--gold);bo
             <div><dt>Time</dt><dd>10:00 AM – 12:00 PM</dd></div>
             <div class="full"><dt>Location</dt><dd>Appleby Blue, 94–116 Southwark Park Road, London SE16 3RD</dd></div>
             <div><dt>Price</dt><dd>£65 per person</dd></div>
-            <div><dt>Spaces</dt><dd>Limited, for a personal, hands-on experience</dd></div>
+            <div><dt>Spaces</dt><dd>Only 10 spaces</dd></div>
           </dl>
           <p class="muted" style="font-size:.92rem">Spaces are limited to ensure a personal, hands-on learning experience. Whether you’re new to Caribbean cooking or looking to develop your skills, this masterclass is the perfect opportunity to learn, create and take a little taste of Jamaica home.</p>
           <div class="btns"><button class="btn" type="button" data-book="class">Book Now</button></div>
@@ -1123,6 +1172,7 @@ input:focus,select:focus,textarea:focus{outline:none;border-color:var(--gold);bo
         <h2 class="h-l">Be first to know when bookings open.</h2>
         <p class="copy">Join our mailing list for upcoming class dates, new masterclasses and special cooking experiences.</p>
         <a class="insta" href="https://www.instagram.com/queen_sheeks_cookery/" target="_blank" rel="noopener"><svg><use href="#i-ig"/></svg>Follow @queen_sheeks_cookery</a>
+        <a class="insta" href="https://www.facebook.com/share/19cHrSYWnV/?mibextid=wwXIfr" target="_blank" rel="noopener"><svg><use href="#i-fb"/></svg>Cookery School on Facebook</a>
       </div>
       <form class="subscribe" id="sub-cook" data-inline novalidate>
         <div class="row"><input id="sub-cook-email" type="email" placeholder="Your email address" aria-label="Email address" autocomplete="email" required><button class="btn " type="submit">Register Your Interest</button></div>
@@ -1342,6 +1392,8 @@ input:focus,select:focus,textarea:focus{outline:none;border-color:var(--gold);bo
           <div class="detail"><span class="eyebrow">Email</span><span class="v" id="emailText">queensheeksbusiness@outlook.com</span><button class="copybtn" type="button" data-copy="queensheeksbusiness@outlook.com">Copy email address</button></div>
           <div class="detail"><span class="eyebrow">Instagram</span><a class="v" href="https://www.instagram.com/queen_sheeks/" target="_blank" rel="noopener" style="text-decoration:none">@queen_sheeks</a></div>
           <div class="detail"><span class="eyebrow">Cookery School</span><a class="v" href="https://www.instagram.com/queen_sheeks_cookery/" target="_blank" rel="noopener" style="text-decoration:none">@queen_sheeks_cookery</a></div>
+          <div class="detail"><span class="eyebrow">Facebook</span><a class="v" href="https://www.facebook.com/share/19rdTdn8WF/?mibextid=wwXIfr" target="_blank" rel="noopener" style="text-decoration:none">Queen Sheeks Restaurant</a></div>
+          <div class="detail"><span class="eyebrow">Facebook</span><a class="v" href="https://www.facebook.com/share/19cHrSYWnV/?mibextid=wwXIfr" target="_blank" rel="noopener" style="text-decoration:none">Queen Sheeks Cookery School</a></div>
         </div>
       </div>
       <div class="formcard rv">
@@ -1396,6 +1448,8 @@ input:focus,select:focus,textarea:focus{outline:none;border-color:var(--gold);bo
         <div class="social rv">
           <a href="https://www.instagram.com/queen_sheeks/" target="_blank" rel="noopener"><svg><use href="#i-ig"/></svg><span class="t"><b>@queen_sheeks</b><span>Queen Sheeks Restaurant</span></span></a>
           <a href="https://www.instagram.com/queen_sheeks_cookery/" target="_blank" rel="noopener"><svg><use href="#i-ig"/></svg><span class="t"><b>@queen_sheeks_cookery</b><span>Jamaican Cookery School</span></span></a>
+          <a href="https://www.facebook.com/share/19rdTdn8WF/?mibextid=wwXIfr" target="_blank" rel="noopener"><svg><use href="#i-fb"/></svg><span class="t"><b>Queen Sheeks on Facebook</b><span>Queen Sheeks Restaurant</span></span></a>
+          <a href="https://www.facebook.com/share/19cHrSYWnV/?mibextid=wwXIfr" target="_blank" rel="noopener"><svg><use href="#i-fb"/></svg><span class="t"><b>Cookery School on Facebook</b><span>Jamaican Cookery School</span></span></a>
         </div>
       </div>
     </div>
@@ -1426,7 +1480,7 @@ input:focus,select:focus,textarea:focus{outline:none;border-color:var(--gold);bo
     <div class="grid">
       <div class="stack">
         <img class="logo" src="img/logo-lockup.png" alt="Queen Sheeks — A Taste of Love in Every Bite" width="936" height="206">
-        <p class="small" style="max-width:34ch">An award-winning Jamaican restaurant in the making, founded by Chef Roshika Forrest.</p>
+        <p class="small" style="max-width:34ch">An award-winning Jamaican restaurant in the making, founded by Chef Roshika A Forrest.</p>
       </div>
       <div>
         <h4>Explore</h4>
@@ -1445,6 +1499,8 @@ input:focus,select:focus,textarea:focus{outline:none;border-color:var(--gold);bo
           <li><span class="small" style="user-select:all;overflow-wrap:anywhere;font-size:.82rem">queensheeksbusiness@outlook.com</span></li>
           <li><a href="https://www.instagram.com/queen_sheeks/" target="_blank" rel="noopener">Instagram · @queen_sheeks</a></li>
           <li><a href="https://www.instagram.com/queen_sheeks_cookery/" target="_blank" rel="noopener">Instagram · @queen_sheeks_cookery</a></li>
+          <li><a href="https://www.facebook.com/share/19rdTdn8WF/?mibextid=wwXIfr" target="_blank" rel="noopener">Facebook · Queen Sheeks Restaurant</a></li>
+          <li><a href="https://www.facebook.com/share/19cHrSYWnV/?mibextid=wwXIfr" target="_blank" rel="noopener">Facebook · Cookery School</a></li>
           <li><a href="https://amzn.eu/d/04xl9zim" target="_blank" rel="noopener">The Cookbook on Amazon</a></li>
         </ul>
       </div>
@@ -1514,13 +1570,35 @@ input:focus,select:focus,textarea:focus{outline:none;border-color:var(--gold);bo
   </div>
 </div>
 
+<div class="modal" id="mailPop" role="dialog" aria-modal="true" aria-labelledby="mpTitle">
+  <div class="panel mailpop">
+    <button class="x" type="button" data-close aria-label="Close">&times;</button>
+    <img class="mp-leaf" src="img/leaf-tr.png" alt="">
+    <div class="stack-l">
+      <img class="mp-logo" src="img/logo-lockup.png" alt="Queen Sheeks — A Taste of Love in Every Bite" width="936" height="206">
+      <div class="stack" style="gap:10px">
+        <span class="eyebrow">Join Our Mailing List</span>
+        <h3 id="mpTitle" class="h-m">Be the first to hear about our next pop-up.</h3>
+        <p class="muted">First access to restaurant pop-ups, new menus, cookery classes and special Queen Sheeks announcements.</p>
+      </div>
+      <form class="subscribe" id="sub-pop" data-inline novalidate>
+        <div class="row"><input id="sub-pop-email" type="email" placeholder="Your email address" aria-label="Email address" autocomplete="email" required><button class="btn " type="submit">Join the List</button></div>
+        <label class="consent" for="sub-pop-ok"><input type="checkbox" id="sub-pop-ok" required> Yes, I’d like to receive emails from Queen Sheeks about pop-ups, menus and classes. I can unsubscribe at any time.</label>
+        <p class="err" hidden></p>
+        <div class="thanks" role="status"><h4>You’re on the list.</h4><p>Thank you for joining the Queen Sheeks mailing list.</p><p class="note">Preview: on the live site this connects to your Wix mailing list.</p></div>
+      </form>
+      <button class="mp-no" type="button" data-close>No thanks</button>
+    </div>
+  </div>
+</div>
+
 <button class="notes-btn" id="notesBtn" type="button" aria-controls="notes" aria-expanded="false"><i></i>Review notes</button>
 <aside class="notes" id="notes" aria-label="Review notes">
   <button class="x" type="button" id="notesClose" aria-label="Close review notes">&times;</button>
   <span class="eyebrow">Design preview · Milestone 1</span>
   <h3>For your approval, Roshika</h3>
   <p class="muted" style="font-size:.9rem">Everything on these six pages uses your written copy, photographs and logo from Google Drive. Forms and bookings are demonstrations here and will be connected in Wix during Milestone 2.</p>
-  <ol><li><b>Homepage introduction.</b> Your original logo now appears first, exactly as designed, then gently fades away so the photograph is fully visible, like The Cinnamon Club. The banner is a balanced landscape frame, so each dish is seen in full on desktop and mobile.</li><li><b>Homepage photos.</b> Four photos rotate: table spread, fritters, cake, then the pop-up dining room set-up.</li><li><b>Logo.</b> Your original logo is used unchanged in the header, the homepage introduction and the footer.</li><li><b>Award.</b> Every mention now reads “StrEATfood Awards 2026, 3rd Place, Dish of the Year”.</li><li><b>Anniversary pop-up.</b> Venue and the four sittings (12:00, 1:00, 2:00 and 3:00 PM) are on the event, and guests choose their sitting when booking.</li><li><b>Cookery School.</b> The Caribbean Seasoning Masterclass shows 30 January 2027, 10 AM to 12 PM at Appleby Blue, £65, with a Book Now button.</li><li><b>Family artwork.</b> Your black-and-white family drawing goes in the Family Legacy section on Our Story.</li><li><b>Reviews and photos.</b> Three reviews are quoted word for word and shown anonymously; guest photos are used as you approved.</li><li><b>Cookbook and press.</b> The cookbook section links to Amazon, and the Best of Brixton feature sits on Our Story.</li><li><b>Bookings and forms.</b> These are demonstrations here. In Milestone 2 they connect to Wix Events (secure payment and automatic confirmations) and Wix Forms, with submissions going to queensheeksbusiness@outlook.com.</li></ol>
+  <ol><li><b>Homepage.</b> Your original logo appears first, then fades to reveal the four photographs (table spread, fritters, cake, dining room) in a balanced frame. A Join Our Mailing List pop-up appears once, after a short delay.</li><li><b>Booking buttons.</b> Book Our Dining Experience, Book Our Masterclass and Discover Our Story under the banner; a compact Book Now beside the menu icon on mobile; three buttons in Your Seat at the Table Awaits.</li><li><b>Photos.</b> The blue-chef photo with fritters is in the Welcome section, IMG_0935 is on the Cookery School card, and your childhood photo now opens Our Story in full, with the heading beside it so it never covers your face.</li><li><b>Family drawing.</b> Your black-and-white family drawing now sits in the Family Legacy section on Our Story, shown in full and unedited. Tap it to view it larger.</li><li><b>Frames.</b> Photos and their captions now sit neatly inside the gold box.</li><li><b>Masterclass.</b> The official flyer is on the Caribbean Seasoning Masterclass listing; tap it to view it larger.</li><li><b>Award.</b> Every mention reads “StrEATfood Awards 2026, 3rd Place, Dish of the Year”.</li><li><b>Facebook.</b> Restaurant and Cookery School Facebook pages are linked on Contact, the footer and the Cookery School page.</li><li><b>Bookings and forms.</b> These are demonstrations here. In Milestone 2 they connect to Wix Events (secure payment and automatic confirmations) and Wix Forms, with submissions going to queensheeksbusiness@outlook.com.</li></ol>
 </aside>
 
 <script>
@@ -1708,6 +1786,16 @@ input:focus,select:focus,textarea:focus{outline:none;border-color:var(--gold);bo
   nb.addEventListener('click',()=>{ const o=!notes.classList.contains('open'); notes.classList.toggle('open',o); nb.setAttribute('aria-expanded',String(o)); });
   document.getElementById('notesClose').addEventListener('click',closeNotes);
 
+  /* mailing-list pop-up: once per visitor, after the logo introduction and a few seconds of photography */
+  (function(){
+    const pop=document.getElementById('mailPop'); if(!pop) return;
+    let seen=false; try{ seen=localStorage.getItem('qs_mail_pop')==='1'; }catch(e){}
+    if(seen) return;
+    setTimeout(function tryShow(){
+      if(document.querySelector('.modal.open')||document.getElementById('mnav').classList.contains('open')){ setTimeout(tryShow,4000); return; }
+      openModal(pop); try{ localStorage.setItem('qs_mail_pop','1'); }catch(e){}
+    }, 9000);
+  })();
   show(route());
 })();
 </script>
