@@ -163,35 +163,42 @@ section{position:relative}
 .dark .orn::before,.dark .orn::after{background:linear-gradient(90deg,transparent,var(--gold-light))}
 .dark .link{color:var(--gold-light)}
 
-/* ---------- home hero slideshow ---------- */
-.hero{position:relative;height:clamp(600px,92svh,980px);min-height:560px;overflow:hidden;background:#1a1410;color:var(--on-dark);isolation:isolate}
+/* ---------- home hero: original logo introduction, then a balanced landscape slideshow ---------- */
+main{padding-top:var(--header-h)}
+.hero-wrap{padding-top:clamp(0px,2.2vw,30px)}
+.hero{position:relative;overflow:hidden;background:var(--cream);isolation:isolate;margin-inline:auto;aspect-ratio:3/2;
+  width:min(calc(100% - var(--gutter) - var(--gutter-r)), 1240px, calc((100svh - var(--header-h) - 170px) * 1.5));min-width:min(100%,320px)}
+@media (max-width:700px){.hero{width:100%}}
 .hero .slide{position:absolute;inset:0;opacity:0;transition:opacity 1.8s var(--ease)}
 .hero .slide.on{opacity:1}
-.hero .slide img{width:100%;height:100%;object-fit:cover;transform:scale(1.08);transition:transform 9s linear}
+.hero .slide img{width:100%;height:100%;object-fit:cover;transform:scale(1.035);transition:transform 8s linear}
 .hero .slide.on img{transform:scale(1)}
-.hero::after{content:"";position:absolute;inset:0;z-index:1;background:radial-gradient(ellipse 75% 60% at 50% 50%,rgba(16,12,9,.66),rgba(16,12,9,.22) 78%),linear-gradient(180deg,rgba(16,12,9,.35) 0%,rgba(16,12,9,0) 30%,rgba(16,12,9,0) 62%,rgba(16,12,9,.6) 100%)}
-.hero .inner{position:relative;z-index:2;height:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;gap:22px;padding-top:var(--header-h)}
-.hero h1{margin:0}
-.hero h1 img{width:min(760px,86vw);margin-inline:auto;filter:drop-shadow(0 2px 18px rgba(0,0,0,.35))}
-.hero .kicker{font:400 clamp(.74rem,.6rem + .5vw,.95rem)/1.5 var(--f-body);letter-spacing:.3em;text-transform:uppercase;color:var(--on-dark);max-width:46ch;text-shadow:0 1px 12px rgba(0,0,0,.4)}
-.hero .tagline{font-family:var(--f-display);font-style:italic;font-size:clamp(1.35rem,1.1rem + 1.2vw,2rem);color:var(--gold-light);text-shadow:0 1px 14px rgba(0,0,0,.45)}
-.hero .btns{margin-top:10px;justify-content:center}
-.hero .dots{position:absolute;z-index:3;left:50%;transform:translateX(-50%);bottom:calc(26px + env(safe-area-inset-bottom,0px));display:flex;gap:10px}
-.hero .dots button{width:34px;height:20px;padding:0;border:0;background:none;cursor:pointer;position:relative}
-.hero .dots button::before{content:"";position:absolute;left:0;right:0;top:50%;height:1px;background:rgba(246,238,226,.45)}
-.hero .dots button::after{content:"";position:absolute;left:0;top:50%;height:1px;width:0;background:var(--on-dark)}
-.hero .dots button.on::after{animation:dot 6.5s linear forwards}
+.hero .intro{position:absolute;inset:0;z-index:4;background:var(--cream);display:flex;align-items:center;justify-content:center;transition:opacity 1.7s var(--ease),visibility 1.7s}
+.hero .intro.gone{opacity:0;visibility:hidden}
+.hero .intro .lockup{width:min(76%,660px);opacity:0;transform:translateY(10px);transition:opacity 1.3s var(--ease),transform 1.8s var(--ease)}
+.hero .intro.show .lockup{opacity:1;transform:none}
+.hero .intro .lf{position:absolute;width:27%;max-width:300px;opacity:0;transition:opacity 1.5s var(--ease) .25s}
+.hero .intro.show .lf{opacity:1}
+.hero .intro .lf.tr{top:0;right:2%}
+.hero .intro .lf.bl{bottom:0;left:2%}
+.hero-cap{display:flex;flex-direction:column;align-items:center;text-align:center;gap:12px;padding-block:20px clamp(52px,6vw,76px)}
+.hero-cap .kicker{font:500 var(--step--1)/1.5 var(--f-body);letter-spacing:.26em;text-transform:uppercase;color:var(--gold-deep)}
+.hero-cap .tagline{font-family:var(--f-display);font-style:italic;font-size:clamp(1.35rem,1.1rem + 1vw,1.9rem);line-height:1.3;color:var(--green)}
+.hero-cap .btns{margin-top:8px}
+.hero-cap .dots{display:flex;gap:10px;margin-bottom:8px}
+.hero-cap .dots button{width:34px;height:20px;padding:0;border:0;background:none;cursor:pointer;position:relative}
+.hero-cap .dots button::before{content:"";position:absolute;left:0;right:0;top:50%;height:1px;background:var(--line)}
+.hero-cap .dots button::after{content:"";position:absolute;left:0;top:50%;height:1px;width:0;background:var(--gold-deep)}
+.hero-cap .dots button.on::after{animation:dot 6.5s linear forwards}
 @keyframes dot{to{width:100%}}
-.hero .scroll-cue{position:absolute;z-index:3;right:calc(var(--gutter-r) + 8px);bottom:calc(22px + env(safe-area-inset-bottom,0px));font:400 .66rem/1 var(--f-body);letter-spacing:.3em;text-transform:uppercase;writing-mode:vertical-rl;display:flex;align-items:center;gap:12px;color:rgba(246,238,226,.8)}
-.hero .scroll-cue::after{content:"";width:1px;height:46px;background:rgba(246,238,226,.6)}
 
 /* ---------- page banners ---------- */
-.banner{position:relative;height:clamp(460px,72svh,760px);overflow:hidden;color:var(--on-dark);background:#1a1410;isolation:isolate}
+.banner{position:relative;height:clamp(420px,64svh,700px);overflow:hidden;color:var(--on-dark);background:#1a1410;isolation:isolate}
 .banner > img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;animation:slowzoom 14s var(--ease) both}
 @keyframes slowzoom{from{transform:scale(1.07)}to{transform:scale(1)}}
 .banner::after{content:"";position:absolute;inset:0;z-index:1;background:linear-gradient(90deg,rgba(16,12,9,.62) 0%,rgba(16,12,9,.3) 45%,rgba(16,12,9,0) 72%),linear-gradient(180deg,rgba(16,12,9,.45) 0%,rgba(16,12,9,.1) 32%,rgba(16,12,9,.25) 55%,rgba(16,12,9,.78) 100%)}
 .banner h1,.banner .sub{text-shadow:0 2px 18px rgba(0,0,0,.35)}
-.banner .inner{position:relative;z-index:2;height:100%;display:flex;flex-direction:column;justify-content:flex-end;gap:16px;padding-block:calc(var(--header-h) + 20px) clamp(44px,7vw,84px)}
+.banner .inner{position:relative;z-index:2;height:100%;display:flex;flex-direction:column;justify-content:flex-end;gap:16px;padding-block:40px clamp(44px,7vw,84px)}
 .banner h1{font-size:var(--step-4);max-width:16ch;color:#fff}
 .banner .eyebrow{color:var(--gold-light)}
 .banner .sub{font-family:var(--f-display);font-style:italic;font-size:var(--step-1);color:var(--on-dark);max-width:40ch}
@@ -224,6 +231,7 @@ section{position:relative}
 .leaf-deco{position:absolute;pointer-events:none;opacity:.9;width:clamp(120px,16vw,230px)}
 
 /* welcome */
+@media (max-width:700px){.welcome .leaf-deco{display:none}.notes-btn{padding:8px 11px;font-size:.6rem}}
 .welcome .intro{display:grid;grid-template-columns:1fr;gap:26px;justify-items:center;text-align:center}
 .welcome h2{font-size:var(--step-3);max-width:18ch}
 
@@ -310,6 +318,9 @@ section{position:relative}
 .facts div:nth-child(odd){padding-right:18px}
 .facts dt{font:500 .68rem/1.4 var(--f-body);letter-spacing:.2em;text-transform:uppercase;color:var(--gold-deep)}
 .facts dd{margin:4px 0 0;font-size:1rem;color:var(--ink)}
+.facts .full{grid-column:1/-1}
+.facts dd.times{display:flex;flex-wrap:wrap;gap:8px;margin-top:8px}
+.facts dd.times span{border:1px solid var(--line);background:var(--cream);padding:5px 11px;font-size:.92rem;font-variant-numeric:tabular-nums}
 .menus{display:flex;gap:14px;flex-wrap:wrap}
 .menu-thumb{display:flex;align-items:center;gap:12px;padding:8px 14px 8px 8px;border:1px solid var(--line);background:var(--cream);cursor:zoom-in;font:400 .9rem/1.3 var(--f-body);color:var(--ink);text-align:left}
 .menu-thumb img{width:46px;height:60px;object-fit:cover}
@@ -430,7 +441,7 @@ input:focus,select:focus,textarea:focus{outline:none;border-color:var(--gold);bo
 @media (max-width:420px){.why{grid-template-columns:1fr}}
 
 /* ---------- contact ---------- */
-.contact-head{padding-top:calc(var(--header-h) + clamp(56px,8vw,110px))}
+.contact-head{padding-top:clamp(56px,8vw,110px)}
 .contact-grid{display:grid;grid-template-columns:.8fr 1.2fr;gap:clamp(36px,6vw,96px);align-items:start}
 .contact-grid > *{min-width:0}
 @media (max-width:900px){.contact-grid{grid-template-columns:1fr}}
@@ -458,17 +469,17 @@ input:focus,select:focus,textarea:focus{outline:none;border-color:var(--gold);bo
 @media (max-width:640px){.social{grid-template-columns:1fr}}
 
 /* ---------- footer ---------- */
-.site-footer{background:var(--forest);color:var(--on-dark);padding-block:clamp(60px,8vw,96px) calc(28px + env(safe-area-inset-bottom,0px));position:relative;overflow:hidden}
+.site-footer{background:var(--paper);color:var(--ink);border-top:1px solid var(--gold);padding-block:clamp(60px,8vw,96px) calc(28px + env(safe-area-inset-bottom,0px));position:relative;overflow:hidden}
 .site-footer .grid{display:grid;grid-template-columns:1.15fr .8fr 1.15fr 1.15fr;gap:clamp(28px,4vw,60px)}
 .site-footer .grid > *{min-width:0}
 .site-footer .logo{width:min(300px,100%)}
-.site-footer h4{font:500 .72rem/1 var(--f-body);letter-spacing:.22em;text-transform:uppercase;color:var(--gold-light);margin-bottom:18px}
+.site-footer h4{font:500 .72rem/1 var(--f-body);letter-spacing:.22em;text-transform:uppercase;color:var(--gold-deep);margin-bottom:18px}
 .site-footer ul{list-style:none;margin:0;padding:0;display:grid;gap:10px}
-.site-footer a{text-decoration:none;color:rgba(246,238,226,.85)}
-.site-footer a:hover{color:var(--gold-light)}
-.site-footer .small{font-size:.86rem;color:rgba(246,238,226,.7)}
-.site-footer .bottom{margin-top:56px;padding-top:22px;border-top:1px solid rgba(226,204,159,.25);display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px;font-size:.8rem;color:rgba(246,238,226,.6)}
-.site-footer .leaf{position:absolute;right:-60px;bottom:-80px;width:240px;opacity:.12;pointer-events:none}
+.site-footer a{text-decoration:none;color:var(--ink)}
+.site-footer a:hover{color:var(--gold-deep)}
+.site-footer .small{font-size:.86rem;color:var(--ink-soft)}
+.site-footer .bottom{margin-top:56px;padding-top:22px;border-top:1px solid var(--line);display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px;font-size:.8rem;color:var(--ink-soft)}
+.site-footer .leaf{position:absolute;right:-30px;bottom:-40px;width:230px;opacity:.5;pointer-events:none}
 @media (max-width:980px){.site-footer .grid{grid-template-columns:1fr 1fr}}
 @media (max-width:560px){.site-footer .grid{grid-template-columns:1fr}}
 
@@ -524,6 +535,7 @@ input:focus,select:focus,textarea:focus{outline:none;border-color:var(--gold);bo
   .rv,.rv.pre{opacity:1;transform:none;transition:none}
   .hero .slide img,.banner > img{transform:none!important;animation:none!important;transition:none!important}
   .hero .slide{transition:opacity .8s linear}
+  .hero .intro .lockup,.hero .intro .lf{transition:opacity .8s linear;transform:none}
   .page{animation:none}
 }
 .mt-s{margin-top:14px}.mt-m{margin-top:28px}.mt-l{margin-top:clamp(40px,6vw,72px)}
@@ -552,7 +564,6 @@ input:focus,select:focus,textarea:focus{outline:none;border-color:var(--gold);bo
   <div class="wrap bar">
     <a class="brand" href="#home" data-go="home" aria-label="Queen Sheeks — home">
       <img class="dk" src="img/logo-wordmark.png" alt="Queen Sheeks" width="936" height="158">
-      <img class="lt" src="img/logo-wordmark-light.png" alt="" width="936" height="158">
     </a>
     <nav class="nav" aria-label="Main">
       <a href="#our-story" data-go="our-story">Our Story</a>
@@ -589,21 +600,27 @@ input:focus,select:focus,textarea:focus{outline:none;border-color:var(--gold);bo
 <main id="main">
 
 <!-- =================================================================== HOME -->
-<div class="page" data-page="home" data-title="Queen Sheeks | Award-Winning Jamaican Restaurant in the Making" data-photo hidden>
+<div class="page" data-page="home" data-title="Queen Sheeks | Award-Winning Jamaican Restaurant in the Making" hidden>
 
-  <section class="hero" aria-label="Queen Sheeks">
-    <div class="slide on"><img src="img/hero-1.jpg" alt="A Queen Sheeks dining table set with Jamaican dishes, sauces and dessert among palm leaves" style="object-position:50% 55%" fetchpriority="high" decoding="async"></div><div class="slide"><img src="img/hero-2.jpg" alt="Crispy fritters with a chilli dipping sauce, served by hand" style="object-position:50% 50%"  decoding="async"></div><div class="slide"><img src="img/hero-3.jpg" alt="A slice of rich dark cake with a pot of custard" style="object-position:50% 58%"  decoding="async"></div>
-    <div class="wrap inner">
-      <h1><img src="img/logo-wordmark-light.png" alt="Queen Sheeks" width="936" height="158"></h1>
-      <p class="kicker">An Award-Winning Jamaican Restaurant in the Making</p>
-      <p class="tagline">A Taste of Love in Every Bite.</p>
-      <div class="btns">
-        <a class="btn light" href="#restaurant" data-go="restaurant">Explore Our Dining Experiences</a>
-        <a class="btn outline-light" href="#our-story" data-go="our-story">Discover Our Story</a>
+  <section class="hero-wrap" aria-label="Queen Sheeks">
+    <div class="hero" id="hero">
+      <div class="slide on"><img src="img/hero-1.jpg" alt="A Queen Sheeks dining table set with Jamaican dishes, sauces and dessert among palm leaves" style="object-position:50% 50%" fetchpriority="high" decoding="async"></div><div class="slide"><img src="img/hero-2.jpg" alt="Crispy fritters with a chilli dipping sauce, served by hand" style="object-position:50% 50%"  decoding="async"></div><div class="slide"><img src="img/hero-3.jpg" alt="A slice of rich dark cake with a pot of custard" style="object-position:50% 56%"  decoding="async"></div><div class="slide"><img src="img/hero-4.jpg" alt="The Queen Sheeks pop-up dining room set with white tables, natural place settings and palm leaves" style="object-position:50% 50%"  decoding="async"></div>
+      <div class="intro" id="heroIntro" aria-hidden="true">
+        <img class="lf tr" src="img/leaf-tr.png" alt="">
+        <img class="lf bl" src="img/leaf-bl.png" alt="">
+        <img class="lockup" src="img/logo-lockup.png" alt="" width="936" height="206">
       </div>
     </div>
-    <div class="dots" id="heroDots" role="tablist" aria-label="Choose photograph"></div>
-    <span class="scroll-cue" aria-hidden="true">Scroll</span>
+    <div class="wrap hero-cap">
+      <div class="dots" id="heroDots" role="tablist" aria-label="Choose photograph"></div>
+      <h1 class="sr">Queen Sheeks, an award-winning Jamaican restaurant in the making</h1>
+      <p class="kicker">An Award-Winning Jamaican Restaurant in the Making</p>
+      <p class="tagline">A Taste of Love in Every Bite.</p>
+      <div class="btns center">
+        <a class="btn" href="#restaurant" data-go="restaurant">Explore Our Dining Experiences</a>
+        <a class="btn ghost" href="#our-story" data-go="our-story">Discover Our Story</a>
+      </div>
+    </div>
   </section>
 
   <section class="sec welcome">
@@ -681,8 +698,8 @@ input:focus,select:focus,textarea:focus{outline:none;border-color:var(--gold);bo
       <figure class="frame tall rv" style="margin:0"><img src="img/home-award.jpg" alt="Chef Roshika Forrest holding her third-place award plaque" loading="lazy" decoding="async"></figure>
       <div class="stack-l rv">
         <span class="eyebrow">Award-Winning Jamaican Flavours</span>
-        <div class="medal"><span class="n">3<sup>rd</sup></span><span class="t">Place Overall<br>British Street Food Awards 2026</span></div>
-        <h2 class="h-m">Proudly Awarded Third Place Overall — British Street Food Awards 2026</h2>
+        <div class="medal"><span class="n">3<sup>rd</sup></span><span class="t">Place · Dish of the Year<br>StrEATfood Awards 2026</span></div>
+        <h2 class="h-m">StrEATfood Awards 2026 — 3rd Place, Dish of the Year</h2>
         <div class="copy stack">
           <p>A proud milestone in our journey, celebrating the passion, creativity and Jamaican flavours behind Queen Sheeks.</p>
           <p>Our award-winning jerk chicken is a reflection of what we believe in: honouring our roots, cooking with love and creating food that leaves a lasting impression.</p>
@@ -734,7 +751,7 @@ input:focus,select:focus,textarea:focus{outline:none;border-color:var(--gold);bo
   </section>
 
   <section class="sec dark cta-band">
-    <img class="bgimg" src="img/cta-bg.jpg" alt="" loading="lazy" decoding="async">
+    <img class="bgimg" src="img/story-cta.jpg" alt="" loading="lazy" decoding="async">
     <div class="wrap narrow center stack-l rv">
       <span class="eyebrow">Be Part of the Queen Sheeks Journey</span>
       <h2 class="h-l" style="color:#fff">Your seat at the table awaits.</h2>
@@ -748,7 +765,7 @@ input:focus,select:focus,textarea:focus{outline:none;border-color:var(--gold);bo
 </div>
 
 <!-- =================================================================== OUR STORY -->
-<div class="page" data-page="our-story" data-title="Our Story | Queen Sheeks" data-photo hidden>
+<div class="page" data-page="our-story" data-title="Our Story | Queen Sheeks" hidden>
   <section class="banner">
     <img src="img/story-banner.jpg" alt="Chef Roshika and the Queen Sheeks team cooking in the kitchen">
     <div class="wrap inner">
@@ -805,7 +822,7 @@ input:focus,select:focus,textarea:focus{outline:none;border-color:var(--gold);bo
           <div class="copy stack">
             <p>In January 2026, Queen Sheeks began bringing my restaurant vision to life through pop-up dining experiences, allowing guests to enjoy the food and hospitality I hope to offer one day in a permanent restaurant.</p>
             <p>Along the way, Queen Sheeks has also brought Jamaican and Caribbean-inspired flavours to corporate workplaces, private events and cultural celebrations.</p>
-            <p>In September 2026, I proudly reached the final of the British Street Food Awards and achieved third place overall — a milestone that reminded me just how far this childhood dream has come.</p>
+            <p>In September 2026, I proudly reached the final of the StrEATfood Awards and won 3rd Place, Dish of the Year — a milestone that reminded me just how far this childhood dream has come.</p>
             <p>Every experience, every customer and every opportunity continues to shape the journey.</p>
           </div>
         </div>
@@ -817,9 +834,9 @@ input:focus,select:focus,textarea:focus{outline:none;border-color:var(--gold);bo
       </div>
       <ol class="timeline mt-l rv" aria-label="Queen Sheeks milestones">
         <li><span class="when">January 2026</span><h4>The first pop-up</h4><p>Queen Sheeks restaurant pop-ups begin, bringing the restaurant vision to life.</p></li>
-        <li><span class="when">September 2026</span><h4>Third place overall</h4><p>British Street Food Awards 2026 — finalist and third place overall.</p></li>
+        <li><span class="when">September 2026</span><h4>3rd Place, Dish of the Year</h4><p>StrEATfood Awards 2026 finalist and award winner.</p></li>
         <li><span class="when">Published</span><h4>Our cookbook</h4><p><em>Queen Sheeks Jamaican Kitchen Essentials</em>, available worldwide on <a href="https://amzn.eu/d/04xl9zim" target="_blank" rel="noopener">Amazon</a>.</p></li>
-        <li class="future"><span class="when">January 2027</span><h4>Cookery School</h4><p>Queen Sheeks Jamaican Cookery School prepares to launch.</p></li>
+        <li class="future"><span class="when">January 2027</span><h4>Cookery School</h4><p>Our first Caribbean Seasoning Masterclass, Saturday 30 January 2027.</p></li>
       </ol>
       <div class="press mt-l rv">
         <img src="img/press-brixton.jpg" alt="Best of Brixton feature showing Chef Roshika Forrest in her chef’s whites" loading="lazy" decoding="async">
@@ -847,7 +864,7 @@ input:focus,select:focus,textarea:focus{outline:none;border-color:var(--gold);bo
 </div>
 
 <!-- =================================================================== RESTAURANT -->
-<div class="page" data-page="restaurant" data-title="Restaurant & Pop-Ups | Queen Sheeks" data-photo hidden>
+<div class="page" data-page="restaurant" data-title="Restaurant & Pop-Ups | Queen Sheeks" hidden>
   <section class="banner">
     <img src="img/rest-banner.jpg" alt="A Queen Sheeks pop-up table with rice and peas, oxtail and sides">
     <div class="wrap inner">
@@ -891,9 +908,9 @@ input:focus,select:focus,textarea:focus{outline:none;border-color:var(--gold);bo
           <dl class="facts">
             <div><dt>Date</dt><dd>Saturday 16 January 2027</dd></div>
             <div><dt>Ticket</dt><dd>£30 per person</dd></div>
-            <div><dt>Sittings</dt><dd>4 exclusive sittings · 45-minute time slots</dd></div>
-            <div><dt>Seats</dt><dd>20 seats per sitting</dd></div>
-            <div><dt>Venue &amp; sitting times</dt><dd>To be confirmed</dd></div>
+            <div class="full"><dt>Venue</dt><dd>Unit 3, 45 Morrish Road, Brixton Hill, London SW2 4EE</dd></div>
+            <div class="full"><dt>Four sittings · 45 minutes each</dt><dd class="times"><span>12:00–12:45 PM</span><span>1:00–1:45 PM</span><span>2:00–2:45 PM</span><span>3:00–3:45 PM</span></dd></div>
+            <div><dt>Seats</dt><dd>20 per sitting</dd></div>
             <div><dt>Takeaway</dt><dd>Available</dd></div>
             <div><dt>Included</dt><dd>Dining experience and meal</dd></div>
             <div><dt>Drinks</dt><dd>Not included — available to purchase on the day</dd></div>
@@ -906,7 +923,7 @@ input:focus,select:focus,textarea:focus{outline:none;border-color:var(--gold);bo
               <button class="menu-thumb" type="button" data-lb="img/menu-veg.jpg" data-cap="Anniversary Vegan / Vegetarian menu"><img src="img/menu-veg.jpg" alt="" loading="lazy">Vegan / Vegetarian menu</button>
             </div>
           </div>
-          <div class="btns"><button class="btn" type="button" data-book>Book Now · £30</button></div>
+          <div class="btns"><button class="btn" type="button" data-book="event">Book Now</button></div>
         </div>
       </article>
       <p class="center muted mt-m" style="font-size:.9rem">More restaurant pop-ups will be announced here. Cookery School classes are listed on the <a href="#cookery-school" data-go="cookery-school">Cookery School</a> page.</p>
@@ -922,7 +939,7 @@ input:focus,select:focus,textarea:focus{outline:none;border-color:var(--gold);bo
         </div>
         <div class="copy stack rv">
           <p>At Queen Sheeks, authenticity is at the heart of everything we create. From our signature Jamaican jerk chicken and rich traditional dishes to vibrant sides and homemade sauces, every plate celebrates our culinary heritage.</p>
-          <p>In September 2026, Queen Sheeks proudly achieved third place overall at the British Street Food Awards, recognising the creativity, dedication and Jamaican flavours behind our food. It’s a milestone we’re incredibly proud of and one that continues to inspire our journey.</p>
+          <p>In September 2026, Queen Sheeks proudly won 3rd Place, Dish of the Year at the StrEATfood Awards 2026, recognising the creativity, dedication and Jamaican flavours behind our food. It’s a milestone we’re incredibly proud of and one that continues to inspire our journey.</p>
         </div>
       </div>
       <div class="feast rv">
@@ -984,7 +1001,7 @@ input:focus,select:focus,textarea:focus{outline:none;border-color:var(--gold);bo
 </div>
 
 <!-- =================================================================== COOKERY SCHOOL -->
-<div class="page" data-page="cookery-school" data-title="Jamaican Cookery School | Queen Sheeks" data-photo hidden>
+<div class="page" data-page="cookery-school" data-title="Jamaican Cookery School | Queen Sheeks" hidden>
   <section class="banner">
     <img src="img/cook-banner.jpg" alt="Chef Roshika Forrest cooking at the StrEATfood Awards">
     <div class="wrap inner">
@@ -1023,7 +1040,7 @@ input:focus,select:focus,textarea:focus{outline:none;border-color:var(--gold);bo
       <article class="class-card rv" aria-labelledby="cl1">
         <div class="visual">
           <img src="img/class.jpg" alt="Chef Roshika cooking with jerk gravy" loading="lazy" decoding="async">
-          <span class="badge soon stamp" style="background:var(--cream)">Coming Soon</span>
+          <span class="badge gold stamp">Saturday 30 January 2027</span>
         </div>
         <div class="body">
           <span class="eyebrow green">Our First Experience</span>
@@ -1046,13 +1063,14 @@ input:focus,select:focus,textarea:focus{outline:none;border-color:var(--gold);bo
             </ul>
           </div>
           <dl class="facts">
+            <div><dt>Date</dt><dd>Saturday 30 January 2027</dd></div>
+            <div><dt>Time</dt><dd>10:00 AM – 12:00 PM</dd></div>
+            <div class="full"><dt>Location</dt><dd>Appleby Blue, 94–116 Southwark Park Road, London SE16 3RD</dd></div>
             <div><dt>Price</dt><dd>£65 per person</dd></div>
             <div><dt>Spaces</dt><dd>Limited, for a personal, hands-on experience</dd></div>
-            <div><dt>Date &amp; time</dt><dd>To be announced</dd></div>
-            <div><dt>Venue</dt><dd>To be announced</dd></div>
           </dl>
-          <p class="muted" style="font-size:.92rem">Bookings are not open yet. Register your interest and we’ll let you know as soon as dates and booking are released. Whether you’re new to Caribbean cooking or looking to develop your skills, this masterclass is the perfect opportunity to learn, create and take a little taste of Jamaica home.</p>
-          <div class="btns"><button class="btn" type="button" data-scroll="cook-interest">Register Your Interest</button></div>
+          <p class="muted" style="font-size:.92rem">Spaces are limited to ensure a personal, hands-on learning experience. Whether you’re new to Caribbean cooking or looking to develop your skills, this masterclass is the perfect opportunity to learn, create and take a little taste of Jamaica home.</p>
+          <div class="btns"><button class="btn" type="button" data-book="class">Book Now</button></div>
         </div>
       </article>
 
@@ -1112,7 +1130,7 @@ input:focus,select:focus,textarea:focus{outline:none;border-color:var(--gold);bo
 </div>
 
 <!-- =================================================================== CATERING -->
-<div class="page" data-page="catering" data-title="Catering & Private Events | Queen Sheeks" data-photo hidden>
+<div class="page" data-page="catering" data-title="Catering & Private Events | Queen Sheeks" hidden>
   <section class="banner">
     <img src="img/cat-banner.jpg" alt="Chef Roshika beside the Jamaican Independence catering counter with Queen Sheeks branding" style="object-position:60% 45%">
     <div class="wrap inner">
@@ -1224,7 +1242,7 @@ input:focus,select:focus,textarea:focus{outline:none;border-color:var(--gold);bo
       </div>
       <div class="why rv">
         <div><h3>Over 10 Years of Culinary Experience</h3><p>Professional expertise in busy kitchens, corporate dining and high-volume food service.</p></div>
-        <div><h3>Award-Winning Jamaican Flavours</h3><p>Proudly achieved third place overall at the British Street Food Awards 2026.</p></div>
+        <div><h3>Award-Winning Jamaican Flavours</h3><p>Proudly awarded 3rd Place, Dish of the Year at the StrEATfood Awards 2026.</p></div>
         <div><h3>Proven Corporate Experience</h3><p>Successful workplace dining experiences at Spotify and Havas Media, including sold-out cultural food events.</p></div>
         <div><h3>Creative, Sales-Focused Menus</h3><p>Exciting Jamaican, Caribbean and international food concepts designed to attract customers and support lunchtime sales.</p></div>
         <div><h3>Bespoke Service with a Personal Touch</h3><p>Thoughtfully planned menus, professional delivery and a genuine passion for creating memorable experiences.</p></div>
@@ -1398,11 +1416,11 @@ input:focus,select:focus,textarea:focus{outline:none;border-color:var(--gold);bo
 </main>
 
 <footer class="site-footer">
-  <img class="leaf" src="img/leaf-light.png" alt="">
+  <img class="leaf" src="img/leaf-tr.png" alt="">
   <div class="wrap">
     <div class="grid">
       <div class="stack">
-        <img class="logo" src="img/logo-lockup-light.png" alt="Queen Sheeks — A Taste of Love in Every Bite" width="936" height="206">
+        <img class="logo" src="img/logo-lockup.png" alt="Queen Sheeks — A Taste of Love in Every Bite" width="936" height="206">
         <p class="small" style="max-width:34ch">An award-winning Jamaican restaurant in the making, founded by Chef Roshika Forrest.</p>
       </div>
       <div>
@@ -1425,7 +1443,7 @@ input:focus,select:focus,textarea:focus{outline:none;border-color:var(--gold);bo
           <li><a href="https://amzn.eu/d/04xl9zim" target="_blank" rel="noopener">The Cookbook on Amazon</a></li>
         </ul>
       </div>
-      <div class="dark" style="background:none">
+      <div>
         <h4>Stay in the Know</h4>
         <form class="subscribe" id="sub-foot" data-inline novalidate>
         <div class="row"><input id="sub-foot-email" type="email" placeholder="Your email address" aria-label="Email address" autocomplete="email" required><button class="btn gold" type="submit">Subscribe</button></div>
@@ -1445,14 +1463,14 @@ input:focus,select:focus,textarea:focus{outline:none;border-color:var(--gold);bo
     <button class="x" type="button" data-close aria-label="Close">&times;</button>
     <form id="bookForm" class="stack-l" novalidate>
       <div class="stack" style="gap:8px">
-        <span class="eyebrow">Saturday 16 January 2027</span>
+        <span class="eyebrow" id="bkDate">Saturday 16 January 2027</span>
         <h3 id="bkTitle" class="h-m">One-Year Anniversary Restaurant Pop-Up</h3>
       </div>
-      <fieldset class="field" style="border:0;padding:0;margin:0">
+      <fieldset class="field" id="fsSitting" style="border:0;padding:0;margin:0">
         <legend class="lbl" style="margin-bottom:10px">Choose your sitting · 20 seats per sitting</legend>
-        <div class="choice cols"><label><input type="radio" name="sitting" value="1" checked> Sitting 1 <span class="muted" style="font-size:.85rem">· time TBC</span></label><label><input type="radio" name="sitting" value="2"> Sitting 2 <span class="muted" style="font-size:.85rem">· time TBC</span></label><label><input type="radio" name="sitting" value="3"> Sitting 3 <span class="muted" style="font-size:.85rem">· time TBC</span></label><label><input type="radio" name="sitting" value="4"> Sitting 4 <span class="muted" style="font-size:.85rem">· time TBC</span></label></div>
+        <div class="choice cols"><label><input type="radio" name="sitting" value="12:00–12:45 PM" checked> 12:00–12:45 PM</label><label><input type="radio" name="sitting" value="1:00–1:45 PM"> 1:00–1:45 PM</label><label><input type="radio" name="sitting" value="2:00–2:45 PM"> 2:00–2:45 PM</label><label><input type="radio" name="sitting" value="3:00–3:45 PM"> 3:00–3:45 PM</label></div>
       </fieldset>
-      <fieldset class="field" style="border:0;padding:0;margin:0">
+      <fieldset class="field" id="fsMenu" style="border:0;padding:0;margin:0">
         <legend class="lbl" style="margin-bottom:10px">Dining option</legend>
         <div class="choice cols">
           <label><input type="radio" name="menu" value="Jamaican Jerk Chicken" checked> Jamaican Jerk Chicken</label>
@@ -1462,7 +1480,7 @@ input:focus,select:focus,textarea:focus{outline:none;border-color:var(--gold);bo
       <div class="field"><span class="lbl">Tickets</span>
         <div class="qty"><button type="button" data-q="-1" aria-label="One fewer ticket">−</button><output id="qty">2</output><button type="button" data-q="1" aria-label="One more ticket">+</button></div>
       </div>
-      <div class="total"><span class="muted">Total · full payment, drinks not included</span><b id="total">£60</b></div>
+      <div class="total"><span class="muted" id="bkNote">Total · full payment, drinks not included</span><b id="total">£60</b></div>
       <button class="btn" type="submit">Continue to Secure Payment</button>
       <div class="thanks" role="status">
         <h4>This is where checkout opens.</h4>
@@ -1497,7 +1515,7 @@ input:focus,select:focus,textarea:focus{outline:none;border-color:var(--gold);bo
   <span class="eyebrow">Design preview · Milestone 1</span>
   <h3>For your approval, Roshika</h3>
   <p class="muted" style="font-size:.9rem">Everything on these six pages uses your written copy, photographs and logo from Google Drive. Forms and bookings are demonstrations here and will be connected in Wix during Milestone 2.</p>
-  <ol><li><b>Hero photos.</b> The three photos from your “Rotating hero slideshow” folder, in the suggested order: dining table, fritters, cake. They change every 6.5 seconds.</li><li><b>Logo over photos.</b> So it stays readable on photographs, the hero and footer use a cream-gold version of your logo with the same letterforms. The header uses your original logo.</li><li><b>Award wording.</b> Your copy says “third place overall at the British Street Food Awards 2026”. The plaque in your award photos reads “StrEATfood Awards 2026, 3rd Place, Dish of the Year”. Please confirm the exact wording before launch.</li><li><b>Family artwork.</b> The black-and-white family drawing wasn’t in the Drive folders. Please upload it and it will go into the reserved space on Our Story.</li><li><b>Anniversary pop-up.</b> The flyer doesn’t give the venue or the four sitting times. Please send them so guests can choose a sitting when booking.</li><li><b>Cookery School.</b> The masterclass shows as Coming Soon with Register Your Interest. Date, time and venue stay hidden until you confirm them, as you asked.</li><li><b>Reviews.</b> Three feedback cards are quoted word for word, without names. One card that mentions slower service was left out. Tell us if you want it included.</li><li><b>Guest photos.</b> Some photos show identifiable guests (Home, Restaurant &amp; Pop-Ups, Our Story). Please confirm you’re happy to publish them.</li><li><b>Catering.</b> The banner is the photo of you at the Jamaican Independence counter. Havas London and Spotify HQ are named in text only, with no client logos.</li><li><b>Cookbook.</b> Home has the cover with “Shop the Cookbook on Amazon” linking to amzn.eu/d/04xl9zim. Our Story lists it as a milestone.</li><li><b>Press.</b> The Best of Brixton feature is on Our Story, using the screenshot from your folder and no publication logo.</li><li><b>Launch video.</b> We kept your preferred photo hero. Edited clips from the launch-day video can be proposed for the Restaurant page in the next round.</li><li><b>Bookings and forms.</b> Here they are demonstrations. In Milestone 2 they connect to Wix Events (with secure payment and automatic confirmations) and Wix Forms, with submissions going to queensheeksbusiness@outlook.com.</li></ol>
+  <ol><li><b>Homepage introduction.</b> Your original logo now appears first, exactly as designed, then gently fades away so the photograph is fully visible, like The Cinnamon Club. The banner is a balanced landscape frame, so each dish is seen in full on desktop and mobile.</li><li><b>Homepage photos.</b> Four photos rotate: table spread, fritters, cake, then the pop-up dining room set-up.</li><li><b>Logo.</b> Your original logo is used unchanged in the header, the homepage introduction and the footer.</li><li><b>Award.</b> Every mention now reads “StrEATfood Awards 2026, 3rd Place, Dish of the Year”.</li><li><b>Anniversary pop-up.</b> Venue and the four sittings (12:00, 1:00, 2:00 and 3:00 PM) are on the event, and guests choose their sitting when booking.</li><li><b>Cookery School.</b> The Caribbean Seasoning Masterclass shows 30 January 2027, 10 AM to 12 PM at Appleby Blue, £65, with a Book Now button.</li><li><b>Family artwork.</b> Your black-and-white family drawing goes in the Family Legacy section on Our Story.</li><li><b>Reviews and photos.</b> Three reviews are quoted word for word and shown anonymously; guest photos are used as you approved.</li><li><b>Cookbook and press.</b> The cookbook section links to Amazon, and the Best of Brixton feature sits on Our Story.</li><li><b>Bookings and forms.</b> These are demonstrations here. In Milestone 2 they connect to Wix Events (secure payment and automatic confirmations) and Wix Forms, with submissions going to queensheeksbusiness@outlook.com.</li></ol>
 </aside>
 
 <script>
@@ -1583,7 +1601,16 @@ input:focus,select:focus,textarea:focus{outline:none;border-color:var(--gold);bo
     const nxt=slides[(idx+1)%slides.length].querySelector('img'); if(nxt&&nxt.loading==='lazy') nxt.loading='eager';
   }
   function restart(){ clearInterval(timer); timer=setInterval(()=>{ if(!document.hidden) go(idx+1); },6500); }
-  function hero(on){ clearInterval(timer); if(on&&slides.length){ go(idx); restart(); } }
+  /* logo introduction: the original logo shows on its own, then fades to reveal the first photograph */
+  const intro=document.getElementById('heroIntro'); let introT=[];
+  function playIntro(done){
+    introT.forEach(clearTimeout); introT=[];
+    if(!intro){ done(); return; }
+    intro.classList.remove('gone','show'); void intro.offsetWidth;
+    introT.push(setTimeout(()=>intro.classList.add('show'),80));
+    introT.push(setTimeout(()=>{ intro.classList.add('gone'); done(); }, reduce?1800:3000));
+  }
+  function hero(on){ clearInterval(timer); introT.forEach(clearTimeout); if(on&&slides.length){ idx=0; go(0); playIntro(()=>{ go(0); restart(); }); } }
 
   /* ---------- reveal on scroll (only for content below the first screen) ---------- */
   let io=null;
@@ -1613,9 +1640,19 @@ input:focus,select:focus,textarea:focus{outline:none;border-color:var(--gold);bo
 
   /* ---------- booking preview ---------- */
   const bm=document.getElementById('bookModal'), bf=document.getElementById('bookForm');
-  let q=2; const qo=document.getElementById('qty'), tot=document.getElementById('total');
-  function setQ(n){ q=Math.max(1,Math.min(10,n)); qo.textContent=q; tot.textContent='£'+(q*30); }
-  document.querySelectorAll('[data-book]').forEach(b=>b.addEventListener('click',()=>{ bf.querySelector('.thanks').classList.remove('show'); openModal(bm); }));
+  const BK={
+    event:{date:'Saturday 16 January 2027 · Brixton Hill, SW2 4EE',title:'One-Year Anniversary Restaurant Pop-Up',price:30,full:true,note:'Total · full payment, drinks not included'},
+    'class':{date:'Saturday 30 January 2027 · 10 AM – 12 PM',title:'Caribbean Seasoning Masterclass',price:65,full:false,note:'Total · full payment'}
+  };
+  let q=2, price=30; const qo=document.getElementById('qty'), tot=document.getElementById('total');
+  function setQ(n){ q=Math.max(1,Math.min(10,n)); qo.textContent=q; tot.textContent='£'+(q*price); }
+  document.querySelectorAll('[data-book]').forEach(b=>b.addEventListener('click',()=>{
+    const c=BK[b.dataset.book]||BK.event; price=c.price;
+    document.getElementById('bkDate').textContent=c.date; document.getElementById('bkTitle').textContent=c.title;
+    document.getElementById('bkNote').textContent=c.note;
+    document.getElementById('fsSitting').hidden=!c.full; document.getElementById('fsMenu').hidden=!c.full;
+    setQ(c.full?2:1); bf.querySelector('.thanks').classList.remove('show'); openModal(bm);
+  }));
   bm.querySelectorAll('[data-q]').forEach(b=>b.addEventListener('click',()=>setQ(q+Number(b.dataset.q))));
   bf.addEventListener('submit',e=>{ e.preventDefault(); bf.querySelector('.thanks').classList.add('show'); bf.querySelector('.thanks').scrollIntoView({block:'nearest'}); });
 
