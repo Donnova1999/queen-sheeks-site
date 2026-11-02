@@ -575,7 +575,7 @@ input:focus,select:focus,textarea:focus{outline:none;border-color:var(--gold);bo
   .story-banner::after{background:linear-gradient(180deg,rgba(16,12,9,.4) 0%,rgba(16,12,9,.75) 100%)}
 }
 /* our story banner: light brand background (client preferred no dark) */
-.story-banner{background:linear-gradient(180deg,var(--cream-deep) 0%,var(--cream) 100%);color:var(--ink)}
+.story-banner{background:var(--paper);color:var(--ink);border-bottom:1px solid var(--line)}
 .story-banner > img.bg{display:none}
 .story-banner::after{display:none}
 .story-banner .sb-deco{position:absolute;z-index:0;pointer-events:none;width:clamp(150px,18vw,260px);opacity:.9}
@@ -583,7 +583,7 @@ input:focus,select:focus,textarea:focus{outline:none;border-color:var(--gold);bo
 .sb-text .eyebrow{color:var(--gold-deep)}
 .sb-text h1{color:var(--ink);text-shadow:none}
 .sb-text .orn{justify-content:flex-start}
-.sb-photo img{border-color:#fff;box-shadow:0 26px 50px -24px rgba(42,37,31,.45)}
+.sb-photo img{border-color:#fff;outline:1px solid var(--line);box-shadow:0 26px 50px -24px rgba(42,37,31,.4)}
 @media (max-width:760px){.sb-text .orn{justify-content:center}.story-banner .sb-deco{display:none}}
 /* masterclass flyer */
 .class-card .visual.flyer{border:0;padding:clamp(14px,2vw,26px);background:var(--cream-deep);display:flex;align-items:flex-start;justify-content:center;cursor:zoom-in;min-height:0}
